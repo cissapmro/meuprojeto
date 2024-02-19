@@ -19,6 +19,7 @@ const delayFetch = async(url: string, delay: number) => {
 
 const getData = async() => {
   const data = await delayFetch('https://api.github.com/users/devfraga/repos', 0);
+ // const data = await delayFetch('https://cccc/xxxx', 0);
   return data;
 }
 
@@ -38,7 +39,8 @@ const data: dataProps[] = await getData();
       <span>Bem vindo a página da Home</span>
       <br />
       <h2>Lista de repositórios</h2>
-      {data.map((item) => (
+      {data.length > 0 && data && (
+      data.map((item) => (
         <div>
           <strong>Repositório:</strong>
           <a>{item.name}</a>
@@ -49,7 +51,8 @@ const data: dataProps[] = await getData();
           />
           <br />
         </div>
-      ))}
+      )))
+      }
     </main>
   );
 }
